@@ -46,25 +46,35 @@ function Chat(props) {
 
   return (
     <>
-      <div className="chat-app">
-        <div>
-          <h1>welcome to: {room.toUpperCase()}</h1>
+      <div className="h-screen flex flex-col justify-center items-center bg-slate-700">
+        <div className="text-white">
+          <h1 className="text-2xl font-semibold">
+            welcome to: {room.toUpperCase()}
+          </h1>
         </div>
-        <div>
+        <div className="flex flex-col space-y-2">
           {Message.map((Message) => (
-            <h1>{Message.text}</h1>
+            <span className="text-gray-500 font-semibold">{Message.text}</span>
           ))}
         </div>
-        <form onSubmit={handleSubmit} className="new-message-form">
-          <input
-            className="new-message-form"
-            placeholder="Type your message"
-            onChange={(e) => setnewMessage(e.target.value)}
-            value={newMessage}
-          />
-          <button type="submit" className="send-button">
-            Send
-          </button>
+        <form
+          onSubmit={handleSubmit}
+          className="w-full flex justify-between items-center"
+        >
+          <div className="flex items-center space-x-4 mb-4">
+            <input
+              className="w-full px-3 py-2 rounded-lg border focus:outline-none focus:border-blue-500"
+              placeholder="Type your message"
+              onChange={(e) => setnewMessage(e.target.value)}
+              value={newMessage}
+            />
+            <button
+              type="submit"
+              className=" inline-flex items-center justify-center rounded-lg px-4 py-2 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none"
+            >
+              Send
+            </button>
+          </div>
         </form>
       </div>
     </>
